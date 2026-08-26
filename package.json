@@ -1,20 +1,35 @@
 {
   "name": "dsh-temperature",
   "version": "0.1.0",
-  "description": "Temperature control for DeepSeek Harness: a global default and per-session overrides, injected into every agent LLM request via the agent/request waterfall.",
+  "description": "Parameter Settings (参数设置) for DeepSeek Harness — global defaults + per-session overrides, an above-the-chat slider strip, per-provider parameter support, and DeepSeek thinking mode.",
   "type": "module",
   "main": "lib/index.js",
   "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
   "keywords": [
     "dsh",
     "dsh-plugin",
     "deepseek-harness",
     "temperature",
     "sampling",
-    "llm"
+    "llm",
+    "parameters",
+    "reasoning"
   ],
   "files": [
     "lib/index.js",
+    "lib/client.js",
     "src/index.ts",
     "cordis.patch.yml",
     "README.md"
@@ -22,6 +37,12 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web"
     }
   },
   "peerDependencies": {
