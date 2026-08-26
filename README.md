@@ -4,6 +4,8 @@
 
 为 DeepSeek Harness 提供 LLM 采样参数控制 —— 全局默认 + 每会话覆盖、对话上方滑块条、按 API 的参数支持、以及 DeepSeek 思考模式。
 
+>现在模型一般都不调这几个参数了 纯开倒车兼容
+
 LLM sampling controls for DeepSeek Harness — global defaults and per-session overrides, an above-the-chat slider strip, per-provider parameter support, and DeepSeek thinking mode.
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -126,7 +128,7 @@ or drop it into `node_modules` and add the row to `cordis.patch.yml`:
       name: dsh-temperature
 ```
 
-Restart `dsh web`, then open **Settings → 参数设置**.
+Restart `dsh web`, then open **Settings → 参数设置(Parameter settings.)**.
 
 ## 🛠️ Parameters
 
@@ -156,7 +158,7 @@ The `providerSupport` table is stored in **`~/.dsh/settings.yaml` → `parameter
 - **Reasoning models** (OpenAI `o1`/`o3`/`gpt-5` with thinking, DeepSeek `R1`, …) often **reject or ignore `temperature` / `top_p`** — disable them for those models.
 - **Anthropic Claude** does not accept `top_p`.
 
-Not sure what your API supports? Open **参数设置**, click **复制 / Copy**, and send the prompt to the agent — it will check your API docs and update the settings file itself.
+Not sure what your API supports? Open **参数设置(Parameter settings.)**, click **复制 / Copy**, and send the prompt to the agent — it will check your API docs and update the settings file itself.
 
 ## 📚 References
 
