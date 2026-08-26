@@ -4,6 +4,8 @@
 
 为 DeepSeek Harness 提供 LLM 采样参数控制 —— 全局默认 + 每会话覆盖、对话上方滑块条、按 API 的参数支持、以及 DeepSeek 思考模式。
 
+>现在模型一般都不调这几个参数了 纯开倒车兼容
+
 LLM sampling controls for DeepSeek Harness — global defaults and per-session overrides, an above-the-chat slider strip, per-provider parameter support, and DeepSeek thinking mode.
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
