@@ -1,0 +1,11 @@
+# dsh-temperature bundle patch.
+#
+# Applied as a user-layer insert over the base/web-app composition. This bundle
+# contributes ONE host row: the plugin that registers the `temperature`
+# settings namespace (global default + per-session overrides) and injects the
+# resolved temperature into every agent/request. It is host-only (no client
+# half), so it loads in the headless/TUI profile too.
+
+- insert:
+    - id: temperature
+      name: 'dsh-temperature'
