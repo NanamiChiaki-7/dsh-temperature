@@ -4,8 +4,6 @@
 
 为 DeepSeek Harness 提供 LLM 采样参数控制 —— 全局默认 + 每会话覆盖、对话上方滑块条、按 API 的参数支持、以及 DeepSeek 思考模式。
 
->现在模型一般都不调这几个参数了 纯开倒车兼容
-
 LLM sampling controls for DeepSeek Harness — global defaults and per-session overrides, an above-the-chat slider strip, per-provider parameter support, and DeepSeek thinking mode.
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -51,7 +49,7 @@ dsh plugin add https://github.com/NanamiChiaki-7/dsh-temperature
 | ----------------- | ------------------------------- | ------------------------------------------------------- |
 | `temperature`     | `0 – 2`（0.01）                 | 全局默认 `1.0`；默认在对话上方显示。                    |
 | `top_p`           | `0 – 1`（0.01）                 | 默认不在对话上方显示。                                  |
-| `maxTokens`       | `1 – 1,000,000`（1）            | 默认不在对话上方显示。                                  |
+| `maxTokens`       | 整数；`<= 0` = 不限        | 用一个**切换按钮**开关限制：关闭（不限）时不发送，用提供方默认；开启后输入正整数（需在模型有效范围内，如 DeepSeek `[1, 393216]`）。默认关闭。 |
 | `reasoningEffort` | `default · off · low · medium · high · max` | DeepSeek 思考模式。`default`=不干预 Harness 自带的推理强度；`off`=关闭思考；`low`–`max`=设置推理强度。 |
 
 思考模式通过 `LlmCallConfig.reasoningEffort` 生效，由 DeepSeek 适配器映射到请求体里的 `thinking` / `reasoning_effort`。
@@ -136,7 +134,7 @@ Restart `dsh web`, then open **Settings → 参数设置**.
 | ----------------- | ---------------------------------- | -------------------------------------------------- |
 | `temperature`     | `0 – 2` (0.01)                     | Global default `1.0`; visible above chat.          |
 | `top_p`           | `0 – 1` (0.01)                     | Hidden above chat by default.                      |
-| `maxTokens`       | `1 – 1,000,000` (1)                | Hidden above chat by default.                      |
+| `maxTokens`       | integer; `<= 0` = unlimited | A **toggle button** switches the limit on/off: off (unlimited) sends nothing so the provider's default applies; on lets you type a positive integer (keep it in the model's valid range, e.g. DeepSeek `[1, 393216]`). Default off. |
 | `reasoningEffort` | `default · off · low · medium · high · max` | DeepSeek thinking mode. `default` = don't touch the harness's own effort; `off` disables thinking; `low`–`max` set the effort. |
 
 Thinking mode is applied through `LlmCallConfig.reasoningEffort` and mapped by the DeepSeek adapter onto `thinking` / `reasoning_effort` on the wire.
